@@ -1,0 +1,19 @@
+<button class="btn btn-sm btn-success">Cadastrar Departamento</button>
+<table class="table table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Departamento</th>
+      <th scope="col">Sigla</th>
+      <th scope="col">Opções</th>      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dep of departamento">
+      <td scope="row">{{dep.id}}</td>
+      <td>{{dep.nome}}</td>
+      <td>{{dep.sigla}}</td>
+      <td><button>REMOVER</button> | <button>EDITAR</button></td>               
+    </tr>
+  </tbody>
+</table>
