@@ -12,7 +12,7 @@ export class DepartamentoComponent implements OnInit {
   constructor() { 
     this.departamento.push(new Departamento(1, "Tecnologia da Informação", "TI"));
     this.departamento.push(new Departamento(2, "Recursos Humandos", "RH"));
-    this.departamento.push(new Departamento(3, "Segurança Patrimonial", "SP"));
+    this.departamento.push(new Departamento(3, "Segurança Patrimonial", "SP"));    
   }
 
   ngOnInit() {

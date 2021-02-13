@@ -8,15 +8,35 @@ import { Funcionario } from 'src/models/funcionario.model';
   styleUrls: ['./funcionario.component.css']
 })
 export class FuncionarioComponent implements OnInit {
-  public funcionario: Funcionario[] = [];
+  public funcionario: Funcionario[] = [];  
 
   constructor() {
-    this.funcionario.push(new Funcionario(1, "Lucas", "https://", "11.111.111-11", 1, new Departamento(1, "Tecnologia da Informação", "TI")));
-    this.funcionario.push(new Funcionario(1, "Jessica", "https://", "11.111.111-11", 1, new Departamento(2, "Recursos Humandos", "RH")));
-    this.funcionario.push(new Funcionario(1, "Santos", "https://", "11.111.111-11", 1, new Departamento(3, "Segurança Patrimonial", "SP")));
+    this.load();
    }
 
   ngOnInit() {
   }
 
+  load() {
+    const func = localStorage.getItem('funcionario');
+    if (func) {
+      this.funcionario = JSON.parse(func);
+      this.funcionario.sort((a, b) => (a.id < b.id) ? -1 : 1);
+    } else {
+      this.funcionario = [];
+    }
+  }
+
+  remover(func: Funcionario) {
+    const index = this.funcionario.indexOf(func);
+    if (index !== -1) {
+      this.funcionario.splice(index, 1);
+    }
+    this.save();
+  }
+
+  save() {
+    const data = JSON.stringify(this.funcionario);
+    localStorage.setItem('funcionario', data);
+  }
 }

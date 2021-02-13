@@ -1,4 +1,4 @@
-<button class="btn btn-sm btn-success">Cadastrar Funcionario</button>
+<button class="btn btn-sm btn-success" [routerLink]="['/cadastrarFunc']">Cadastrar Funcionario</button>
 <table class="table table-hover">
   <thead class="thead-light">
     <tr>
@@ -6,8 +6,7 @@
           <th scope="col">Funcionário</th>
           <th scope="col">Foto</th>
           <th scope="col">RG</th>
-          <th scope="col">Departamento</th>
-          <th scope="col">Departamento Id</th>
+          <th scope="col">Departamento</th>          
           <th scope="col">Opções</th>    
     </tr>
   </thead>
@@ -17,9 +16,8 @@
       <td>{{func.nome}}</td>
       <td>{{func.foto}}</td>
       <td>{{func.rg}}</td>
-      <td>{{func.departamento.nome}}</td>
-      <td>{{func.departamentoId}}</td>
-      <td><button>REMOVER</button> | <button>EDITAR</button></td>      
+      <td>{{func.departamento}}</td>      
+      <td><button (click)="remover(func)">REMOVER</button> | <button [routerLink]="['/editarFunc', func.id]">EDITAR</button></td>      
     </tr>
   </tbody>
 </table>
