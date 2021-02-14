@@ -8,7 +8,8 @@ import { Funcionario } from 'src/models/funcionario.model';
   styleUrls: ['./funcionario.component.css']
 })
 export class FuncionarioComponent implements OnInit {
-  public funcionario: Funcionario[] = [];  
+  public funcionario: Funcionario[] = [];
+  public departamento: Departamento[] = [];  
 
   constructor() {
     this.load();
@@ -22,6 +23,7 @@ export class FuncionarioComponent implements OnInit {
     if (func) {
       this.funcionario = JSON.parse(func);
       this.funcionario.sort((a, b) => (a.id < b.id) ? -1 : 1);
+      console.log(this.funcionario);
     } else {
       this.funcionario = [];
     }

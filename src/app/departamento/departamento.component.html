@@ -13,7 +13,7 @@
       <td scope="row">{{dep.id}}</td>
       <td>{{dep.nome}}</td>
       <td>{{dep.sigla}}</td>
-      <td><button>REMOVER</button> | <button [routerLink]="['/editarDep']">EDITAR</button></td>               
+      <td><button (click)="remover(dep)">REMOVER</button> | <button [routerLink]="['/editarDep', dep.id]">EDITAR</button></td>               
     </tr>
   </tbody>
 </table>

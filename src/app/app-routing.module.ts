@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', component: DepartamentoComponent },
   { path: 'funcionarios', component: FuncionarioComponent }, 
   { path: 'cadastrarDep', component: DepartamentoCadastrarComponent },
-  { path: 'editarDep', component: DepartamentoEditarComponent }, 
+  { path: 'editarDep/:id', component: DepartamentoEditarComponent }, 
   { path: 'cadastrarFunc', component: FuncionarioCadastrarComponent },
   { path: 'editarFunc/:id', component: FuncionarioEditarComponent }
 ];

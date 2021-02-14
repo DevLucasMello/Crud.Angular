@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Departamento } from 'src/models/departamento.model';
 import { Funcionario } from 'src/models/funcionario.model';
 
 @Component({
@@ -11,7 +12,7 @@ import { Funcionario } from 'src/models/funcionario.model';
 })
 export class FuncionarioCadastrarComponent implements OnInit {
   public form: FormGroup;
-  public departamentos = ["Tecnologia", "Recursos", "Segurança"];
+  public departamento: Departamento[] = [];  
   public funcionario: Funcionario[] = [];
 
   constructor(
@@ -45,6 +46,7 @@ export class FuncionarioCadastrarComponent implements OnInit {
 
   ngOnInit() {
     this.load();
+    this.loadDepartamento();
   }
 
   load() {
@@ -53,6 +55,15 @@ export class FuncionarioCadastrarComponent implements OnInit {
       this.funcionario = JSON.parse(func);
     } else {
       this.funcionario = [];
+    }
+  }
+
+  loadDepartamento() {
+    const dep = localStorage.getItem('departamento');
+    if (dep) {
+      this.departamento = JSON.parse(dep);       
+    } else {
+      this.departamento = [];
     }
   }
 

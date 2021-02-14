@@ -1,8 +1,10 @@
+import { formatCurrency } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { Departamento } from 'src/models/departamento.model';
 import { Funcionario } from 'src/models/funcionario.model';
 
 @Component({
@@ -13,11 +15,11 @@ import { Funcionario } from 'src/models/funcionario.model';
 export class FuncionarioEditarComponent implements OnInit {
   public form: FormGroup;  
   public id: number;
-  public departamentos = ["Tecnologia", "Recursos", "Segurança"];
+  public departamento: Departamento[] = [];
+  public dpto: string[] = [];
   public funcionario: Funcionario[] = [];
-  public funcio: Funcionario;
+  public funcio: Funcionario;  
   private sub: any;
-  
   
   constructor(
     private router: Router,    
@@ -44,36 +46,47 @@ export class FuncionarioEditarComponent implements OnInit {
         departamento: ['', Validators.compose([
           Validators.minLength(3),
           Validators.maxLength(50),
-          Validators.required        
+          Validators.required                  
         ])]
-      });
+      });            
     }
     
-    ngOnInit() {
-      this.load();      
+    ngOnInit() {      
+      this.load();            
     }
     
     load() {
+      
+      const dep = localStorage.getItem('departamento');
+      if (dep) {
+        this.departamento = JSON.parse(dep);           
+      } else {
+        this.departamento = [];
+      }
+      
       this.sub = this.route.params.subscribe(params => {
         this.id = +params['id'];
       });
-      
       const func = localStorage.getItem('funcionario');
       if (func) {
         this.funcionario = JSON.parse(func);
         for(let f of this.funcionario){
-          if(this.id === f.id){
+          if(this.id === f.id){                      
             this.form.controls['nome'].setValue(f.nome);
             this.form.controls['foto'].setValue(f.foto);
-            this.form.controls['rg'].setValue(f.rg);
-            this.form.controls['departamento'].setValue(f.departamento)
-            this.funcio = f;
+            this.form.controls['rg'].setValue(f.rg);            
+            this.form.controls['departamento'].setValue(f.departamento);
+            this.funcio = f;  
           }
         }
       } else {
-        this.funcionario = [];
-        this.form.patchValue(this.funcionario);
+        this.funcio = null;
+        this.form.patchValue(this.funcio);
       }
+    }
+    
+    mostrar(){
+      console.log(this.dpto);    
     }
     
     submit() {
@@ -87,12 +100,12 @@ export class FuncionarioEditarComponent implements OnInit {
       this.save();             
       this.router.navigate(['/funcionarios']);    
     }
-
+    
     save() {
       const data = JSON.stringify(this.funcionario);
       localStorage.setItem('funcionario', data);
     }
-
+    
     remover(func: Funcionario) {
       const index = this.funcionario.indexOf(func);
       if (index !== -1) {

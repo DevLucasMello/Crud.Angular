@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Departamento } from 'src/models/departamento.model';
 
 @Component({
   selector: 'app-departamentoCadastrar',
@@ -10,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DepartamentoCadastrarComponent implements OnInit {
   public form: FormGroup;
+  public departamento: Departamento[] = [];
   
   constructor(
     private router: Router,    
@@ -31,11 +33,35 @@ export class DepartamentoCadastrarComponent implements OnInit {
     }
     
     ngOnInit() {
+      this.load();
+    }
+
+    load() {
+      const dep = localStorage.getItem('departamento');
+      if (dep) {
+        this.departamento = JSON.parse(dep);        
+      } else {
+        this.departamento = [];
+      }
     }
     
     submit() {
-      
-      this.router.navigate(['/cadastrarDep']);
+      const id = this.departamento.length + 1;
+      const nome = this.form.controls['nome'].value;
+      const sigla = this.form.controls['sigla'].value;        
+      this.departamento.push(new Departamento(id, nome, sigla));
+      this.save();
+      this.clear();
+      this.router.navigate(['/']);    
+    }
+
+    save() {
+      const data = JSON.stringify(this.departamento);
+      localStorage.setItem('departamento', data);
+    }
+
+    clear() {
+      this.form.reset();
     }
     
   }

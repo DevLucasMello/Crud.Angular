@@ -1,22 +1,23 @@
 <button class="btn btn-sm btn-success" [routerLink]="['/cadastrarFunc']">Cadastrar Funcionario</button>
+
 <table class="table table-hover">
   <thead class="thead-light">
     <tr>
       <th scope="col">#</th>
-          <th scope="col">Funcionário</th>
-          <th scope="col">Foto</th>
-          <th scope="col">RG</th>
-          <th scope="col">Departamento</th>          
-          <th scope="col">Opções</th>    
+      <th scope="col">Funcionário</th>
+      <th scope="col">Foto</th>
+      <th scope="col">RG</th>
+      <th scope="col">Departamento</th>          
+      <th scope="col">Opções</th>    
     </tr>
-  </thead>
+  </thead>  
   <tbody>
     <tr *ngFor="let func of funcionario">
       <td scope="row">{{func.id}}</td>
       <td>{{func.nome}}</td>
       <td>{{func.foto}}</td>
       <td>{{func.rg}}</td>
-      <td>{{func.departamento}}</td>      
+      <td>{{func.departamento}}</td>           
       <td><button (click)="remover(func)">REMOVER</button> | <button [routerLink]="['/editarFunc', func.id]">EDITAR</button></td>      
     </tr>
   </tbody>
