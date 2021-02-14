@@ -10,4 +10,11 @@
 
 .btt{
     margin-right: 2vw;
+    
+}
+
+@media(max-width: 450px){
+    .altura{
+        margin-top: 2vh;
+    }
 }

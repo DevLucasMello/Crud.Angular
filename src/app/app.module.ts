@@ -3,6 +3,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,11 +34,13 @@ import { FuncionarioEditarComponent } from './pages/pages-funcionario/funcionari
       FramePageComponent
    ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     AppRoutingModule,    
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    CollapseModule.forRoot(), 
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

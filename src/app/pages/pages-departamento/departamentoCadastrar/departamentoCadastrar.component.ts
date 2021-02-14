@@ -53,7 +53,7 @@ export class DepartamentoCadastrarComponent implements OnInit {
       this.departamento.push(new Departamento(id, nome, sigla));
       this.save();
       this.clear();
-      this.router.navigate(['/']);    
+      this.router.navigate(['/departamentos']);    
     }
 
     save() {
