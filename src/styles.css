@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+.espaco{
+    margin-top: 1vh;
+}
+
+.espaco2{
+    margin-top: 2vh;
+}
+
+.btt{
+    margin-right: 2vw;
+}

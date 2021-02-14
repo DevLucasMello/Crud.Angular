@@ -12,6 +12,7 @@ import { Departamento } from 'src/models/departamento.model';
 export class DepartamentoCadastrarComponent implements OnInit {
   public form: FormGroup;
   public departamento: Departamento[] = [];
+  public titulo = 'Cadastrar - Departamento';
   
   constructor(
     private router: Router,    

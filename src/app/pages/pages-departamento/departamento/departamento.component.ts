@@ -8,6 +8,7 @@ import { Departamento } from 'src/models/departamento.model';
 })
 export class DepartamentoComponent implements OnInit {
   public departamento: Departamento[] = [];
+  public titulo = 'Departamentos';
 
   constructor() { 
     this.load(); 

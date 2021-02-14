@@ -20,6 +20,8 @@ export class FuncionarioEditarComponent implements OnInit {
   public funcionario: Funcionario[] = [];
   public funcio: Funcionario;  
   private sub: any;
+  public departamentoId: number;
+  public titulo = 'Alterar - Funcionário';
   
   constructor(
     private router: Router,    
@@ -95,8 +97,13 @@ export class FuncionarioEditarComponent implements OnInit {
       const nome = this.form.controls['nome'].value;
       const foto = this.form.controls['foto'].value;
       const rg = this.form.controls['rg'].value;
-      const departamento = this.form.controls['departamento'].value;    
-      this.funcionario.push(new Funcionario(id, nome, foto, rg, departamento));
+      const departamento = this.form.controls['departamento'].value;
+      for(let dpId of this.departamento){
+        if(departamento === dpId.nome){
+          this.departamentoId = dpId.id;
+        }
+      }       
+      this.funcionario.push(new Funcionario(id, nome, foto, rg, this.departamentoId, departamento));
       this.save();             
       this.router.navigate(['/funcionarios']);    
     }

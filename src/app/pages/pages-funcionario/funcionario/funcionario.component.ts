@@ -9,7 +9,8 @@ import { Funcionario } from 'src/models/funcionario.model';
 })
 export class FuncionarioComponent implements OnInit {
   public funcionario: Funcionario[] = [];
-  public departamento: Departamento[] = [];  
+  public departamento: Departamento[] = [];
+  public titulo = 'Funcionarios';  
 
   constructor() {
     this.load();

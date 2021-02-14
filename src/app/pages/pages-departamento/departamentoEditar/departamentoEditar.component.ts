@@ -15,6 +15,7 @@ export class DepartamentoEditarComponent implements OnInit {
   public departamento: Departamento[] = [];
   public dpto: Departamento;
   private sub: any;
+  public titulo = 'Alterar - Departamento';
   
   constructor(
     private router: Router,    
