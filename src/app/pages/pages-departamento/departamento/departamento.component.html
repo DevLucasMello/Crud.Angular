@@ -17,7 +17,7 @@
           <td scope="row">{{dep.id}}</td>
           <td>{{dep.nome}}</td>
           <td>{{dep.sigla}}</td>
-          <td><button class="btn btn-sm btn-outline-danger" (click)="remover(dep)">Remover</button>&nbsp;
+          <td><button class="btn btn-sm btn-outline-danger btt" (click)="remover(dep)">Remover</button>
             <button class="btn btn-sm btn-outline-info" [routerLink]="['/editarDep', dep.id]">Editar</button>
           </td>               
         </tr>
